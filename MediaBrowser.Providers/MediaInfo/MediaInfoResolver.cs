@@ -339,8 +339,7 @@ namespace MediaBrowser.Providers.MediaInfo
             mediaStream.Path = pathInfo.Path;
             mediaStream.IsExternal = true;
             mediaStream.Title = string.IsNullOrEmpty(mediaStream.Title) ? (string.IsNullOrEmpty(pathInfo.Title) ? null : pathInfo.Title) : mediaStream.Title;
-            mediaStream.Language = string.IsNullOrEmpty(mediaStream.Language) ? (string.IsNullOrEmpty(pathInfo.Language) ? null : pathInfo.Language) : mediaStream.Language;
-
+            mediaStream.Language = string.IsNullOrEmpty(mediaStream.Language) || string.Equals(mediaStream.Language, "und", StringComparison.OrdinalIgnoreCase) ? (string.IsNullOrEmpty(pathInfo.Language) ? null : pathInfo.Language) : mediaStream.Language;
             return mediaStream;
         }
     }
